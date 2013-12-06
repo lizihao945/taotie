@@ -4,6 +4,7 @@
   <tr>
     <th>Name</th>
     <th>Category</th>
+    <th>Description</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,6 +14,7 @@
   <tr>
     <td><%= food.name %></td>
     <td><%= food.category %></td>
+    <td><%= food.description %></td>
     <td><%= link_to 'Show', food %></td>
     <td><%= link_to 'Edit', edit_food_path(food) %></td>
     <td><%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } %></td>

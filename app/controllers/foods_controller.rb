@@ -33,6 +33,7 @@ class FoodsController < ApplicationController
   # GET /foods/new.json
   def new
     @food = Food.new
+    @food.category_id = 0
 
     respond_to do |format|
       format.html # new.html.erb
@@ -49,6 +50,7 @@ class FoodsController < ApplicationController
   # POST /foods.json
   def create
     @food = Food.new(params[:food])
+    user_foodship = UserFoodship.create( user: current_user, food: @food )
 
     respond_to do |format|
       if @food.save
