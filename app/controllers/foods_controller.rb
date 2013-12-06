@@ -1,4 +1,12 @@
 class FoodsController < ApplicationController
+   before_filter :authenticate, :except => [:index, :show]
+
+  def authenticate
+    if current_user.nil?
+      redirect_to login_path, :notice => "Please login."
+    end
+  end
+
   # GET /foods
   # GET /foods.json
   def index

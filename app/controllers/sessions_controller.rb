@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def create
-    user = User.authenticate(params[:email], params[:passwd])
+    user = User.authenticate(params[:email], params[:password])
     if user
       session[:user_id] = user.id
     end
@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
         format.html { redirect_to root_url, :notice => "Logged in successfully!" }
       else
         format.js
-        format.html { redirect_to root_url, :notice => "Invalid email or password!" }
+        format.html { redirect_to login_url, :notice => "Invalid email or password!" }
       end
     end
   end

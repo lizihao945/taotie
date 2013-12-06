@@ -1,15 +1,13 @@
 Taotie::Application.routes.draw do
-  get "sessions/new"
 
   resources :foods
-
 
   resources :users
 
   get 'signup' => 'users#new', as: 'signup'
   get 'login' => 'sessions#new', as: 'login'
   get 'logout' => 'sessions#destroy', as: 'logout'
-  post 'sessions' => 'sessions#new'
+  post 'sessions' => 'sessions#create'
   delete 'sessions/:id' => 'sessions#destroy'
   # The priority is based upon order of creation:
   # first created -> highest priority.
