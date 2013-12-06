@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  cookbook: 
+  image_url: MyString
+  description: MyText
+
+two:
+  cookbook: 
+  image_url: MyString
+  description: MyText

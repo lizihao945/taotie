@@ -1,5 +1,8 @@
 Taotie::Application.routes.draw do
 
+  resources :cookbooks
+
+
   resources :foods
 
   resources :users

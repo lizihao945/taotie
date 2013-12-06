@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @cookbook.user %>
+</p>
+
+<p>
+  <b>Difficulty level:</b>
+  <%= @cookbook.difficulty_level %>
+</p>
+
+<p>
+  <b>Time level:</b>
+  <%= @cookbook.time_level %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @cookbook.description %>
+</p>
+
+<p>
+  <b>Tips:</b>
+  <%= @cookbook.tips %>
+</p>
+
+
+<%= link_to 'Edit', edit_cookbook_path(@cookbook) %> |
+<%= link_to 'Back', cookbooks_path %>

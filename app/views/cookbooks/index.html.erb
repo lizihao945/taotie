@@ -1,0 +1,31 @@
+<h1>Listing cookbooks</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Difficulty level</th>
+    <th>Time level</th>
+    <th>Description</th>
+    <th>Tips</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cookbooks.each do |cookbook| %>
+  <tr>
+    <td><%= cookbook.user %></td>
+    <td><%= cookbook.difficulty_level %></td>
+    <td><%= cookbook.time_level %></td>
+    <td><%= cookbook.description %></td>
+    <td><%= cookbook.tips %></td>
+    <td><%= link_to 'Show', cookbook %></td>
+    <td><%= link_to 'Edit', edit_cookbook_path(cookbook) %></td>
+    <td><%= link_to 'Destroy', cookbook, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Cookbook', new_cookbook_path %>
