@@ -11,7 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131206022152) do
+ActiveRecord::Schema.define(:version => 20131206022921) do
+
+  create_table "food_categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "foods", :force => true do |t|
+    t.string   "name"
+    t.integer  "category_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "foods", ["category_id"], :name => "index_foods_on_category_id"
+
+  create_table "user_foodships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "food_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

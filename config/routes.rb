@@ -1,4 +1,7 @@
 Taotie::Application.routes.draw do
+  resources :foods
+
+
   resources :users
 
 
