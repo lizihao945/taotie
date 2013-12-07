@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131206034305) do
+ActiveRecord::Schema.define(:version => 20131207140840) do
 
   create_table "cook_steps", :force => true do |t|
     t.integer  "cookbook_id"
@@ -48,6 +48,16 @@ ActiveRecord::Schema.define(:version => 20131206034305) do
   end
 
   add_index "foods", ["category_id"], :name => "index_foods_on_category_id"
+
+  create_table "materials", :force => true do |t|
+    t.integer  "cookbook_id"
+    t.string   "name"
+    t.integer  "quantity"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "materials", ["cookbook_id"], :name => "index_materials_on_cookbook_id"
 
   create_table "user_foodships", :force => true do |t|
     t.integer  "user_id"

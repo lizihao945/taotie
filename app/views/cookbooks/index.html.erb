@@ -7,6 +7,7 @@
     <th>Time level</th>
     <th>Description</th>
     <th>Tips</th>
+    <th>Materials</th>
     <th></th>
     <th></th>
     <th></th>
@@ -19,6 +20,13 @@
     <td><%= cookbook.time_level %></td>
     <td><%= cookbook.description %></td>
     <td><%= cookbook.tips %></td>
+    <td>
+      <% if cookbook.materials.size != 0 %>
+      <%= cookbook.materials %>
+      <% else %>
+      No materials has been added.
+      <% end %>
+    </td>
     <td><%= link_to 'Show', cookbook %></td>
     <td><%= link_to 'Edit', edit_cookbook_path(cookbook) %></td>
     <td><%= link_to 'Destroy', cookbook, method: :delete, data: { confirm: 'Are you sure?' } %></td>

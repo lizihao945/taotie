@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Cookbook:</b>
+  <%= @material.cookbook %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @material.name %>
+</p>
+
+<p>
+  <b>Quantity:</b>
+  <%= @material.quantity %>
+</p>
+
+
+<%= link_to 'Edit', edit_material_path(@material) %> |
+<%= link_to 'Back', materials_path %>
