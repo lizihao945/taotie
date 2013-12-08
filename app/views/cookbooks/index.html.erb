@@ -8,6 +8,7 @@
     <th>Description</th>
     <th>Tips</th>
     <th>Materials</th>
+    <th>存在于以下菜单中</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,7 +16,7 @@
 
 <% @cookbooks.each do |cookbook| %>
   <tr>
-    <td><%= cookbook.user %></td>
+    <td><%= cookbook.user.name %></td>
     <td><%= cookbook.difficulty_level %></td>
     <td><%= cookbook.time_level %></td>
     <td><%= cookbook.description %></td>
@@ -24,7 +25,14 @@
       <% if cookbook.materials.size != 0 %>
       <%= cookbook.materials %>
       <% else %>
-      No materials has been added.
+      暂未指明原料
+      <% end %>
+    </td>
+    <td>
+      <% if cookbook.menus.size != 0 %>
+      <%= cookbook.menus %>
+      <% else %>
+      还没添加至任何菜单
       <% end %>
     </td>
     <td><%= link_to 'Show', cookbook %></td>

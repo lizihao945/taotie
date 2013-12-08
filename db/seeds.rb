@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+# encoding: UTF-8
+FoodCategory.delete_all
+FoodCategory.create(name: "test1")
+FoodCategory.create(name: "test2")
+FoodCategory.create(name: "test3")
+FoodCategory.create(name: "test4")
