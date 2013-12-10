@@ -1,15 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
+  <b>美食名称</b>
   <%= @food.name %>
 </p>
 
 <p>
-  <b>Category:</b>
-  <%= @food.category %>
+  <b>标签：</b>
+    <% categories = FoodFoodCategoryship.find_all_by_food_id(@food.id) %>
+    <% if not categories.nil? %>
+      <% categories.each do |food_categoryship| %>
+        <%= FoodCategory.find(food_categoryship.food_category_id).name %>
+      <% end %>
+    <% end %>
 </p>
 
-
-<%= link_to 'Edit', edit_food_path(@food) %> |
-<%= link_to 'Back', foods_path %>
+<%= link_to 'Edit', edit_food_path(@food) %>

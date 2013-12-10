@@ -4,26 +4,36 @@
   <table>
     <tr>
       <th>Name</th>
-      <th>Category</th>
+      <th>Categories</th>
       <th>Description</th>
       <th></th>
       <th></th>
       <th></th>
     </tr>
 
-  <% @foods.each do |food| %>
+    <% @foods.each do |food| %>
     <tr>
-      <td><%= food.name %></td>
-      <td><%= food.category %></td>
-      <td><%= food.description %></td>
-      <td><%= link_to 'Show', food %></td>
-      <td><%= link_to 'Edit', edit_food_path(food) %></td>
-      <td><%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td>
+        <%= food.name %></td>
+      <td>
+        <% categories = FoodFoodCategoryship.find_all_by_food_id(food.id) %>
+        <% if not categories.nil? %>
+          <% categories.each do |food_categoryship| %>
+            <%= FoodCategory.find(food_categoryship.food_category_id).name %>
+          <% end %>
+        <% end %>
+      </td>
+      <td>
+        <%= food.description %></td>
+      <td>
+        <%= link_to 'Show', food %></td>
+      <td>
+        <%= link_to 'Edit', edit_food_path(food) %></td>
+      <td>
+        <%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
-  <% end %>
-  </table>
+    <% end %></table>
 
   <br />
 
-  <%= link_to 'New Food', new_food_path, class: 'btn btn-lg btn-primary', role: 'button' %>
-</div>
+  <%= link_to 'New Food', new_food_path, class: 'btn btn-lg btn-primary', role: 'button' %></div>
