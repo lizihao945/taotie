@@ -2,48 +2,185 @@
   <h2>美食</h2>
   <hr class="title-divider">
   <div class="row">
-  <% @foods.each do |food| %>
-    <div class="col-md-3">
-      <div class='food'>
-        <div class='food_img'>
-          <%= image_tag food.image_url %>
-        </div>
-        <div class='food_info'>
-          <div class='food_name'>
-            <strong><%= link_to food.name, food %></strong>
+  <div class="col-md-3">
+    <% @foods.each do |food| %>
+      <% if food.id % 4 == 0 %>
+        <div class='food'>
+          <div class='food_img'>
+            <%= image_tag food.image_url %>
           </div>
-          <div>
-            简介：<%= food.description %>
+          <div class='food_info'>
+            <div class='food_name'>
+              <strong><%= link_to food.name, food %></strong>
+            </div>
+            <div>
+              简介：<%= food.description %>
+            </div>
+            <% categories = FoodFoodCategoryship.find_all_by_food_id(food.id) %>
+            <% users = UserFoodship.find_all_by_food_id(food.id) %>
+            <% if categories.count != 0 %>
+              <div>
+                标签：
+                <% categories.each do |food_categoryship| %>    
+                  <%= FoodCategory.find(food_categoryship.food_category_id).name %>    
+                <% end %>
+              </div>
+            <% end %>
+            <% if users.count != 0 %>
+              <div>
+                作者：
+                <% users.each do |user_foodship| %>    
+                  <%= User.find(user_foodship.user_id).name %>    
+                <% end %>
+              </div>
+            <% end %>
+            <% if food.main_user %>
+              <%= render food.main_user %>
+            <% end %>
           </div>
-          <% categories = FoodFoodCategoryship.find_all_by_food_id(food.id) %>
-          <% users = UserFoodship.find_all_by_food_id(food.id) %>
-          <% if categories.count != 0 %>
-            <div>
-              标签：
-              <% categories.each do |food_categoryship| %>    
-                <%= FoodCategory.find(food_categoryship.food_category_id).name %>    
-              <% end %>
-            </div>
-          <% end %>
-          <% if users.count != 0 %>
-            <div>
-              作者：
-              <% users.each do |user_foodship| %>    
-                <%= User.find(user_foodship.user_id).name %>    
-              <% end %>
-            </div>
-          <% end %>
-          <% if food.main_user %>
-            <%= render food.main_user %>
-          <% end %>
         </div>
-      </div>
-      <div>
-          <%= link_to 'Show', food %>
-          <%= link_to 'Edit', edit_food_path(food) %>
-          <%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </div>
-    </div>
-  <% end %>
+        <div>
+            <%= link_to 'Show', food %>
+            <%= link_to 'Edit', edit_food_path(food) %>
+            <%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col-md-3">
+    <% @foods.each do |food| %>
+      <% if food.id % 4 == 1 %>
+        <div class='food'>
+          <div class='food_img'>
+            <%= image_tag food.image_url %>
+          </div>
+          <div class='food_info'>
+            <div class='food_name'>
+              <strong><%= link_to food.name, food %></strong>
+            </div>
+            <div>
+              简介：<%= food.description %>
+            </div>
+            <% categories = FoodFoodCategoryship.find_all_by_food_id(food.id) %>
+            <% users = UserFoodship.find_all_by_food_id(food.id) %>
+            <% if categories.count != 0 %>
+              <div>
+                标签：
+                <% categories.each do |food_categoryship| %>    
+                  <%= FoodCategory.find(food_categoryship.food_category_id).name %>    
+                <% end %>
+              </div>
+            <% end %>
+            <% if users.count != 0 %>
+              <div>
+                作者：
+                <% users.each do |user_foodship| %>    
+                  <%= User.find(user_foodship.user_id).name %>    
+                <% end %>
+              </div>
+            <% end %>
+            <% if food.main_user %>
+              <%= render food.main_user %>
+            <% end %>
+          </div>
+        </div>
+        <div>
+            <%= link_to 'Show', food %>
+            <%= link_to 'Edit', edit_food_path(food) %>
+            <%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      <% end %>
+    <% end %>    
+  </div>
+  <div class="col-md-3">
+    <% @foods.each do |food| %>
+      <% if food.id % 4 == 2 %>
+        <div class='food'>
+          <div class='food_img'>
+            <%= image_tag food.image_url %>
+          </div>
+          <div class='food_info'>
+            <div class='food_name'>
+              <strong><%= link_to food.name, food %></strong>
+            </div>
+            <div>
+              简介：<%= food.description %>
+            </div>
+            <% categories = FoodFoodCategoryship.find_all_by_food_id(food.id) %>
+            <% users = UserFoodship.find_all_by_food_id(food.id) %>
+            <% if categories.count != 0 %>
+              <div>
+                标签：
+                <% categories.each do |food_categoryship| %>    
+                  <%= FoodCategory.find(food_categoryship.food_category_id).name %>    
+                <% end %>
+              </div>
+            <% end %>
+            <% if users.count != 0 %>
+              <div>
+                作者：
+                <% users.each do |user_foodship| %>    
+                  <%= User.find(user_foodship.user_id).name %>    
+                <% end %>
+              </div>
+            <% end %>
+            <% if food.main_user %>
+              <%= render food.main_user %>
+            <% end %>
+          </div>
+        </div>
+        <div>
+            <%= link_to 'Show', food %>
+            <%= link_to 'Edit', edit_food_path(food) %>
+            <%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col-md-3">
+    <% @foods.each do |food| %>
+      <% if food.id % 4 == 3 %>
+        <div class='food'>
+          <div class='food_img'>
+            <%= image_tag food.image_url %>
+          </div>
+          <div class='food_info'>
+            <div class='food_name'>
+              <strong><%= link_to food.name, food %></strong>
+            </div>
+            <div>
+              简介：<%= food.description %>
+            </div>
+            <% categories = FoodFoodCategoryship.find_all_by_food_id(food.id) %>
+            <% users = UserFoodship.find_all_by_food_id(food.id) %>
+            <% if categories.count != 0 %>
+              <div>
+                标签：
+                <% categories.each do |food_categoryship| %>    
+                  <%= FoodCategory.find(food_categoryship.food_category_id).name %>    
+                <% end %>
+              </div>
+            <% end %>
+            <% if users.count != 0 %>
+              <div>
+                作者：
+                <% users.each do |user_foodship| %>    
+                  <%= User.find(user_foodship.user_id).name %>    
+                <% end %>
+              </div>
+            <% end %>
+            <% if food.main_user %>
+              <%= render food.main_user %>
+            <% end %>
+          </div>
+        </div>
+        <div>
+            <%= link_to 'Show', food %>
+            <%= link_to 'Edit', edit_food_path(food) %>
+            <%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
   </div>
   <%= link_to 'New Food', new_food_path, class: 'btn btn-lg btn-primary', role: 'button' %></div>

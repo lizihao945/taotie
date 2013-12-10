@@ -33,7 +33,17 @@ food0 = Food.create(name: "法式焗蜗牛", description: "简直就是人间美
 \n\n
 食用蜗牛需要配备钳子和双齿叉。就餐时，用右手拿钳子夹住蜗牛壳，左手用叉子将蜗牛肉挑出食用。吃蜗牛没有特别的礼仪讲究，但是蜗牛最好趁热吃，这样蜗牛肉才会比较容易从壳内取出，否则可能就要费些力气了。当然，只要熟练使用钳子和叉子，即使是蜗牛这样的带壳动物，吃起来也同样可以姿态优雅，像朱丽娅 罗伯茨在电影《漂亮女人》中表演的那种蜗牛飞出的夸张场面，在法餐厅中几乎从未出现过。")
 food1 = Food.create(name: "日式料理", description: "看着就流口水", image_url: "food1.jpg", main_user: user1)
-food2 = Food.create(name: "蘑菇肉", description: "难以置信！这么简单的原料也能做出上等的菜肴", image_url: "food2.jpg")
+food2 = Food.create(name: "蘑菇肉", description: "难以置信！这么简单的原料也能做出上等的菜肴", image_url: "food2.jpg", main_user: user1)
+food3 = Food.create(name: "家常小炒", description: "难以置信！这么简单的原料也能做出上等的菜肴", image_url: "food3.jpg", main_user: user2)
+food4 = Food.create(name: "冰淇淋", description: "难以置信！这么简单的原料也能做出上等的菜肴", image_url: "food4.jpg", main_user: user3)
+food5 = Food.create(name: "小包子", description: "难以置信！这么简单的原料也能做出上等的菜肴", image_url: "food5.jpg", main_user: user1)
+food6 = Food.create(name: "鲍汁海参", description: "难以置信！这么简单的原料也能做出上等的菜肴", image_url: "food6.jpg", main_user: user0)
+food7 = Food.create(name: "沙丁鱼", description: "难以置信！这么简单的原料也能做出上等的菜肴", image_url: "food7.jpg", main_user: user2)
+food8 = Food.create(name: "鸡尾酒", description: "难以置信！这么简单的原料也能做出上等的菜肴", image_url: "food8.jpg", main_user: user0)
+food9 = Food.create(name: "雪域蛋糕", description: "难以置信！这么简单的原料也能做出上等的菜肴", image_url: "food9.jpg", main_user: user2)
+food10 = Food.create(name: "甜饼", description: "难以置信！这么简单的原料也能做出上等的菜肴", image_url: "food10.jpg", main_user: user3)
+food11 = Food.create(name: "烤番薯", description: "难以置信！这么简单的原料也能做出上等的菜肴", image_url: "food11.jpg", main_user: user1)
+food12 = Food.create(name: "冰淇淋", description: "难以置信！这么简单的原料也能做出上等的菜肴", image_url: "food12.jpg", main_user: user3)
 
 FoodFoodCategoryship.delete_all
 FoodFoodCategoryship.create(food_id: food1.id, food_category_id: food_category3.id)
