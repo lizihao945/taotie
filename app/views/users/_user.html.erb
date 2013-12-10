@@ -2,7 +2,7 @@
 	<div class="food_main_user_info">
 		<div class='user_img_and_name'>
 			<%= image_tag user.image_url %>
-			<a><span><%= user.name %></span></a>
+			<%= link_to user.name, user %>
 		</div>
 	</div>
 	<!--food_likes-->

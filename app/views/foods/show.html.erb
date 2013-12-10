@@ -1,18 +1,28 @@
-<p id="notice"><%= notice %></p>
+<div class='container'>
+	<div class="row food_detail">
+    <div class="col-lg-8">
+      <h2><%= @food.name %></h2>
+      <p><%= @food.description %></p>
+      <h3>简介</h3>
+      <p><%= simple_format @food.detail %></p>
+      <h3>标签</h3>
+      <p>
+	  	  <% categories = FoodFoodCategoryship.find_all_by_food_id(@food.id) %>
+	    	<% if categories.count != 0 %>
+	      	<% categories.each do |food_categoryship| %>
+	        	<%= FoodCategory.find(food_categoryship.food_category_id).name %>
+		      <% end %>
+		    <% else %>
+		      <span>暂无标签</span>
+	    	<% end %>
+			</p>
+    </div>
 
-<p>
-  <b>美食名称</b>
-  <%= @food.name %>
-</p>
+    <div class="col-lg-4">
+  		<%= image_tag @food.image_url %>
+  		<h4><%= @food.name %></h4>
+    </div>
+  </div>
 
-<p>
-  <b>标签：</b>
-    <% categories = FoodFoodCategoryship.find_all_by_food_id(@food.id) %>
-    <% if not categories.nil? %>
-      <% categories.each do |food_categoryship| %>
-        <%= FoodCategory.find(food_categoryship.food_category_id).name %>
-      <% end %>
-    <% end %>
-</p>
 
-<%= link_to 'Back', foods_path %>
+</div>

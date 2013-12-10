@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131210120907) do
+ActiveRecord::Schema.define(:version => 20131210123503) do
 
   create_table "cook_steps", :force => true do |t|
     t.integer  "cookbook_id"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20131210120907) do
     t.string   "description",  :default => ""
     t.string   "image_url",    :default => ""
     t.integer  "main_user_id"
+    t.text     "detail",       :default => ""
   end
 
   add_index "foods", ["main_user_id"], :name => "index_foods_on_main_user_id"
