@@ -1,5 +1,8 @@
 Taotie::Application.routes.draw do
 
+  resources :restaurants
+
+
   get "welcome/index"
 
   resources :menus

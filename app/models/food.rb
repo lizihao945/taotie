@@ -1,5 +1,5 @@
 class Food < ActiveRecord::Base
-  attr_accessible :name, :description
+  attr_accessible :name, :description, :image_url
 
   has_many :user_foodships
   has_many :users, through: :user_foodships

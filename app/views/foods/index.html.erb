@@ -1,39 +1,46 @@
-<div class="jumbotron">
-  <h1>Listing foods</h1>
-
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Categories</th>
-      <th>Description</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-
-    <% @foods.each do |food| %>
-    <tr>
-      <td>
-        <%= food.name %></td>
-      <td>
-        <% categories = FoodFoodCategoryship.find_all_by_food_id(food.id) %>
-        <% if not categories.nil? %>
-          <% categories.each do |food_categoryship| %>
-            <%= FoodCategory.find(food_categoryship.food_category_id).name %>
+<div class='container'>
+  <h2>美食</h2>
+  <hr class="title-divider">
+  <div class="row">
+  <% @foods.each do |food| %>
+    <div class="col-md-3">
+      <div class='food'>
+        <div class='food_img'>
+          <%= image_tag food.image_url %>
+        </div>
+        <div class='food_info'>
+          <div class='food_name'>
+            <strong><%= food.name %></strong>
+          </div>
+          <div>
+            简介：<%= food.description %>
+          </div>
+          <% categories = FoodFoodCategoryship.find_all_by_food_id(food.id) %>
+          <% users = UserFoodship.find_all_by_food_id(food.id) %>
+          <% if categories.count != 0 %>
+            <div>
+              标签：
+              <% categories.each do |food_categoryship| %>    
+                <%= FoodCategory.find(food_categoryship.food_category_id).name %>    
+              <% end %>
+            </div>
           <% end %>
-        <% end %>
-      </td>
-      <td>
-        <%= food.description %></td>
-      <td>
-        <%= link_to 'Show', food %></td>
-      <td>
-        <%= link_to 'Edit', edit_food_path(food) %></td>
-      <td>
-        <%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-    <% end %></table>
-
-  <br />
-
+          <% if users.count != 0 %>
+            <div>
+              作者：
+              <% users.each do |user_foodship| %>    
+                <%= User.find(user_foodship.user_id).name %>    
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <div>
+            <%= link_to 'Show', food %>
+            <%= link_to 'Edit', edit_food_path(food) %>
+            <%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
   <%= link_to 'New Food', new_food_path, class: 'btn btn-lg btn-primary', role: 'button' %></div>
