@@ -21,10 +21,7 @@ test:
 
 production:
   adapter: postgresql
-  database: taotie_production
+  database: postgres://cflwmjaqflibms:fz-ppQIDmW_BQIDLhvOu6Qm0ot@ec2-54-204-16-232.compute-1.amazonaws.com:5432/d6n3lqtibi14tu
   encoding: unicode
-  host: localhost
-  username: admin
-  password: admin
   pool: 5
   timeout: 5000
