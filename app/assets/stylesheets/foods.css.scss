@@ -1,6 +1,10 @@
 // Place all the styles related to the foods controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.food {
+	height: 350px;
+}
+
 .food_img img {
 	width: 250px;
 	height: 170px;
@@ -9,4 +13,23 @@
 .food_info {
 	text-align: center;
 	height: 120px;
+}
+
+.food_main_user {
+	width: 250px;
+	height: 100px;
+	color: #999;
+	.food_like_comment {
+		float: right;
+	}
+	.food_main_user_info {
+		height: 80px;
+		.user_img_and_name {
+			float: left;
+			img {
+				width: 40px;
+				height: 40px;
+			}
+		}
+	}
 }

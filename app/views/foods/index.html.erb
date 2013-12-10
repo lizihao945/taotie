@@ -10,7 +10,7 @@
         </div>
         <div class='food_info'>
           <div class='food_name'>
-            <strong><%= food.name %></strong>
+            <strong><%= link_to food.name, food %></strong>
           </div>
           <div>
             简介：<%= food.description %>
@@ -33,12 +33,15 @@
               <% end %>
             </div>
           <% end %>
+          <% if food.main_user %>
+            <%= render food.main_user %>
+          <% end %>
         </div>
-        <div>
-            <%= link_to 'Show', food %>
-            <%= link_to 'Edit', edit_food_path(food) %>
-            <%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </div>
+      </div>
+      <div>
+          <%= link_to 'Show', food %>
+          <%= link_to 'Edit', edit_food_path(food) %>
+          <%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } %>
       </div>
     </div>
   <% end %>

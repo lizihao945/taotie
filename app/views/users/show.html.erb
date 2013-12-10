@@ -1,20 +1,16 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
-
-<p>
-  <b>Password:</b>
-  <%= @user.password %>
-</p>
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div>
+	<div class="left zupmnbottom mtm">
+		<div class='user_img'>
+			<%= image_tag @user.image_url%>
+		</div>
+		<a><span><%= @user.name %></span></a>
+	</div>
+	<div class='food_likes'>
+		<span class='glyphicon glyphicon-heart'></span>
+		<a dishid="276536" href="javascript:void(0);" class="reczulikeed">160 喜欢</a>
+  </div>
+  <div class='food_comments'>
+  	<span class='glyphicon glyphicon-comment'></span>
+		<span class="right mlm"><a dishid="160" href="http://www.douguo.com/dish/276536" class="reczupingl" target="_blank">20 评论</a></span>
+	</div>
+</div>

@@ -1,5 +1,7 @@
 class Food < ActiveRecord::Base
-  attr_accessible :name, :description, :image_url
+  attr_accessible :name, :description, :image_url, :main_user
+
+  belongs_to :main_user, class_name: 'User', foreign_key: 'main_user_id'
 
   has_many :user_foodships
   has_many :users, through: :user_foodships
