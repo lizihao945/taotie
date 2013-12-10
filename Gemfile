@@ -7,10 +7,15 @@ Encoding.default_internal = Encoding::UTF_8
 
 gem 'i18n'
 
+group :development, :test do
+  gem 'sqlite3'
+end
 
-gem 'pg'
-gem 'rails_12factor'
-gem 'thin'
+group :production do
+  gem 'pg', '~> 0.17.0'
+  gem 'rails_12factor'
+  gem 'thin'
+end
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
