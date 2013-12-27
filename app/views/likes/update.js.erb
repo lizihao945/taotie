@@ -1,0 +1,5 @@
+<% if current_user.already_likes?(@like.food) %>
+  $( "#food_like_<%= @like.food.id %>" ).html( "<%= @like.count %> 已喜欢" );
+<% else %>
+  $( "#food_like_<%= @like.food.id %>" ).html( "<%= @like.count %> 喜欢" );
+<% end %>
