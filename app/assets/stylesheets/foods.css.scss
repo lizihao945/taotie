@@ -13,15 +13,11 @@
 .food_info {
 	text-align: center;
 	height: 120px;
+	width: 250px;
 }
 
 .food_main_user {
-	width: 250px;
-	height: 100px;
-	color: #999;
-	.food_like_comment {
-		float: right;
-	}
+	height: 80px;
 	.food_main_user_info {
 		height: 80px;
 		.user_img_and_name {
@@ -32,6 +28,11 @@
 			}
 		}
 	}
+}
+
+.food_like_comment {
+	color: #999;
+	float: right;
 }
 
 .col-lg-4 {

@@ -15,10 +15,18 @@ class User < ActiveRecord::Base
   def self.authenticate(email, password)
     user = find_by_email_and_password(email, password)
   end
-
+  #food posted by the user
   has_many :user_foodships
   has_many :foods, through: :user_foodships
+  #like liked by the user
+  has_many :user_likeships
+  has_many :likes, through: :user_likeships
+  #
   def able_to_modify_food?(food)
     self.foods.find(:all, conditions: ['food_id = ?', food.id]).size != 0
+  end
+  #
+  def already_likes?(food)
+    self.likes.find(:all, conditions: ['food_id = ?', food.id]).size != 0
   end
 end

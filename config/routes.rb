@@ -1,18 +1,16 @@
 Taotie::Application.routes.draw do
 
-  resources :restaurants
+  put 'likes/:id' => 'likes#update', as: 'like'
 
+  resources :restaurants
 
   get "welcome/index"
 
   resources :menus
 
-
   resources :materials
 
-
   resources :cookbooks
-
 
   resources :foods
 
