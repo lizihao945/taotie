@@ -1,0 +1,4 @@
+$( "#existing_comments_<%= @comment.food_id %>" ).append( "<%= escape_javascript(render @comment) %>" );
+$( "#comment_<%= @comment.id %>").effect( "highlight", "slow");
+$( "#new_comment_on_<%= @comment.food_id %>" )[0].reset();
+$( "#comments_count_<%= @comment.food_id %>" ).text("(<%= @comment.food.comments.count %>)");

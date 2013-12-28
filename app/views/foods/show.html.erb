@@ -1,8 +1,13 @@
-<div class='container'>
-	<div class="row food_detail">
-    <div class="col-lg-8">
+<div class='container food'>
+  <div class='row'>
+    <div class='col-lg-12'>
       <h2><%= @food.name %></h2>
       <p><%= @food.description %></p>
+    </div>
+  </div>
+  <hr>
+  <div class="row food_detail">
+    <div class="col-lg-8">
       <h3>简介</h3>
       <p><%= simple_format @food.detail %></p>
       <h3>标签</h3>
@@ -16,13 +21,31 @@
 		      <span>暂无标签</span>
 	    	<% end %>
 			</p>
+      <h3>用户评论</h3>
+      <!-- food like -->
+      <div class='food_like_comment_div'>
+        <%= render partial: 'food_like_comment', locals: { food: @food } %>
+      </div>
+      <!-- comments -->
+      <div class= 'list_comments', id="list_comments_<%= @food.id %>">
+        <div id="existing_comments_<%= @food.id %>" >
+          <%= render @food.comments %>
+        </div>
+        <div class="new_comment new_comment_<%= @food.id %>">
+          <%= form_for [@food, Comment.new],
+            html: { id: "new_comment_on_#{@food.id}" },
+            remote: true do |f| %>
+            <p>
+              <%= f.text_area :content, class: 'form-control', rows: 5 %></p>
+            <p>
+              <%= submit_tag '评论', class: 'btn', role: 'button' %></p>
+          <% end %>
+        </div>
+      </div>
     </div>
-
     <div class="col-lg-4">
-  		<%= image_tag @food.image_url %>
+  		<%= image_tag @food.image_url, class: 'food_image' %>
   		<h4><%= @food.name %></h4>
     </div>
   </div>
-
-
 </div>

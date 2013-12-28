@@ -1,0 +1,5 @@
+$( "#comment_<%= @comment.id %>" ).effect( "blind", { percent: 0 }, 500, callback );
+function callback() {
+  $( "#comment_<%= @comment.id %>" ).remove();
+  $( "#comments_count_<%= @comment.food_id %>" ).text("(<%= @comment.food.comments.count %>)");
+};

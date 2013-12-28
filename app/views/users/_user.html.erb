@@ -1,8 +1,6 @@
-<div class='food_main_user'>
-	<div class="food_main_user_info">
-		<div class='user_img_and_name'>
-			<%= image_tag user.image_url %>
-			<%= link_to user.name, user %>
-		</div>
-	</div>
-</div>
+<% if user.image_url == "" %>
+	<%= image_tag 'default_avatar', class: 'small_avatar'  %>
+<% else %>
+	<%= image_tag user.image_url, class: 'small_avatar'  %>
+<% end %>
+<%= link_to user.name, user %>

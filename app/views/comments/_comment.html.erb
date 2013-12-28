@@ -1,0 +1,12 @@
+<%= div_for comment do %>
+  <% if comment.user %>
+    <%= render comment.user %>：
+  <% end %>
+  <%= comment.content %>
+  <br/>
+  <% delete_path = "/foods/"+ String(comment.food_id) + "/comments/" + String(comment.id) %>
+  <% if comment.user == current_user || comment.food.main_user == current_user %>
+  <%= link_to 'Destroy', delete_path, method: :delete, remote: true %>
+  <% end %>
+  <hr style='margin-top: 5px; margin-bottom: 5px;'>
+<% end %>

@@ -12,7 +12,9 @@ Taotie::Application.routes.draw do
 
   resources :cookbooks
 
-  resources :foods
+  resources :foods do
+    resources :comments
+  end
 
   resources :users
 

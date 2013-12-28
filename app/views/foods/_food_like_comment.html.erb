@@ -1,0 +1,23 @@
+<div class='food_like_comment' >
+  <!-- food likes link -->
+  <% if current_user %>
+  <% if current_user.already_likes?(food) %>
+  <span class='glyphicon glyphicon-heart'></span>
+  <%= link_to "已喜欢 (#{food.like.count})", like_path(food.like), id: "food_like_#{food.id}", method: :put, remote: true %>
+  <% else %>
+  <span class='glyphicon glyphicon-heart'></span>
+  <%= link_to "喜欢 (#{food.like.count})", like_path(food.like), id: "food_like_#{food.id}", method: :put, remote: true %>
+  <% end %>
+  <% else %>
+  <span class='glyphicon glyphicon-heart'></span>
+  <%= link_to "喜欢 (#{food.like.count})", login_path %>
+  <% end %>
+  <!-- comments -->
+  &nbsp;
+  <span class='glyphicon glyphicon-comment'></span>
+  <a href="javascript:void(0);" id="comment_<%= food.id %>">评论
+    <% if food.comments.count != 0 %>
+    <span id="comments_count_<%= food.id %>">(<%= food.comments.count %>)</span>
+    <% end %>
+  </a>
+</div>

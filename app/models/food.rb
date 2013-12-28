@@ -10,6 +10,7 @@ class Food < ActiveRecord::Base
   has_many :food_categories, through: :food_food_categoryships
 
   has_one :like
+  has_many :comments
 
   validates_presence_of :name
   validates_presence_of :description
