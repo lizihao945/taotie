@@ -1,0 +1,23 @@
+<div class='cookbook_like_comment' >
+  <!-- cookbook likes link -->
+  <% if current_user %>
+    <% if current_user.already_likes_cookbook?(cookbook) %>
+      <span class='glyphicon glyphicon-heart'></span>
+      <%= link_to "已喜欢 (#{cookbook.cookbook_like.count})", cookbook_like_path(cookbook.cookbook_like), id: "cookbook_like_#{cookbook.id}", method: :put, remote: true %>
+    <% else %>
+      <span class='glyphicon glyphicon-heart'></span>
+      <%= link_to "喜欢 (#{cookbook.cookbook_like.count})", cookbook_like_path(cookbook.cookbook_like), id: "cookbook_like_#{cookbook.id}", method: :put, remote: true %>
+    <% end %>
+  <% else %>
+    <span class='glyphicon glyphicon-heart'></span>
+    <%= link_to "喜欢 (#{cookbook.cookbook_like.count})", login_path %>
+  <% end %>
+  <!-- comments -->
+  &nbsp;
+  <span class='glyphicon glyphicon-comment'></span>
+  <a href="javascript:void(0);" id="comment_<%= cookbook.id %>">评论
+    <% if cookbook.cookbook_comments.count != 0 %>
+    <span id="comments_count_<%= cookbook.id %>">(<%= cookbook.cookbook_comments.count %>)</span>
+    <% end %>
+  </a>
+</div>

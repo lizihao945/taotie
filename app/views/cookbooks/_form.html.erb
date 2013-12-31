@@ -1,33 +1,63 @@
-<%= form_for(@cookbook) do |f| %>
-  <% if @cookbook.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@cookbook.errors.count, "error") %> prohibited this cookbook from being saved:</h2>
-
-      <ul>
-      <% @cookbook.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for(@cookbook) do |f| %> 
+<% if @cookbook.errors.any? %>  
+<div id="error_explanation">
+  <h2>
+    <%= pluralize(@cookbook.errors.count, "error") %>prohibited this cookbook from being saved:</h2>
+  <ul>
+    <% @cookbook.errors.full_messages.each do |msg| %>  
+    <li>
+      <%= msg %></li>
+    <% end %></ul>
+</div>
+<% end %>
+  <div class='row'>
+    <div class='col-md-3'>
+      <div class="field">
+        <h3>所属美食</h3>
+        <%= collection_select :cookbook, :food_id, Food.find(:all), :id, :name %>
+      </div>
+      <div class="field">
+        <h3>菜谱难度等级</h3><br />
+        <ul class="list-group">
+          <li class="list-group-item">
+            <input type="radio" name="cookbook[difficulty_level]" value="1">低难度
+          </li>
+          <li class="list-group-item">
+            <input type="radio" name="cookbook[difficulty_level]" value="2">中等难度
+          </li>
+          <li class="list-group-item">
+            <input type="radio" name="cookbook[difficulty_level]" value="3">高难度
+          </li>
+        </ul>
+      </div>
     </div>
-  <% end %>
-  
-  <div class="field">
-    <%= f.label :difficulty_level %><br />
-    <%= f.number_field :difficulty_level %>
+    <div class='col-md-3'>
+      <div class='field'>
+        <h3>菜谱用时</h3><br />
+        <ul class="list-group">
+          <li class="list-group-item">
+            <input type="radio" name="cookbook[time_level]" value="1">少于十分钟
+          </li>
+          <li class="list-group-item">
+            <input type="radio" name="cookbook[time_level]" value="2">十分钟到半小时
+          </li>
+          <li class="list-group-item">
+            <input type="radio" name="cookbook[time_level]" value="3">半小时到一个小时
+          </li>
+          <li class="list-group-item">
+            <input type="radio" name="cookbook[time_level]" value="3">一个小时以上
+          </li>
+        </ul>
+      </div>
+      <div class="field">
+        <h3>菜谱描述</h3><br />
+        <%= f.text_field :description, class: 'form-control' %></div>
+      <div class="field">
+        <h3>菜谱小贴士</h3><br />
+        <%= f.text_field :tips, class: 'form-control' %></div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :time_level %><br />
-    <%= f.number_field :time_level %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :tips %><br />
-    <%= f.text_field :tips %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class='row'>
+    <%= submit_tag 'Create cookbook', class: 'btn btn-lg btn-primary', role: 'button' %>
   </div>
 <% end %>

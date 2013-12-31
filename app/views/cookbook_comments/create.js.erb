@@ -1,0 +1,13 @@
+<% if @cookbook_comment.invalid? %>
+	<% x = "发生了 #{pluralize(@cookbook_comment.errors.count, "error")} 个错误" %>
+	<% x += '\n' %>
+  <% @cookbook_comment.errors.full_messages.each do |msg| %>
+  	<% x += msg.to_s + '\n' %>
+  <% end %>
+  alert("<%= x %>");
+<% else %>
+	$( "#existing_cookbook_comments_<%= @cookbook_comment.cookbook_id %>" ).append( "<%= escape_javascript(render @cookbook_comment) %>" );
+	$( "#cookbook_comment_<%= @cookbook_comment.id %>").effect( "highlight", "slow");
+	$( "#new_cookbook_comment_on_<%= @cookbook_comment.cookbook_id %>" )[0].reset();
+	$( "#cookbook_comments_count_<%= @cookbook_comment.cookbook_id %>" ).text("(<%= @cookbook_comment.cookbook.cookbook_comments.count %>)");
+<% end %>

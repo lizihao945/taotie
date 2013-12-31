@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
     @comment.food = Food.find(params[:food_id])
     @comment.user = current_user
+    @comment.save
     respond_to do |format|
       format.js
     end

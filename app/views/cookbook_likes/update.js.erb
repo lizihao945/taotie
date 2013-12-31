@@ -1,0 +1,5 @@
+<% if current_user.already_likes_cookbook?(@cookbook_like.cookbook) %>
+  $( "#cookbook_like_<%= @cookbook_like.cookbook.id %>" ).html( "已喜欢 (<%= @cookbook_like.count %>)" );
+<% else %>
+  $( "#cookbook_like_<%= @cookbook_like.cookbook.id %>" ).html( "喜欢 (<%= @cookbook_like.count %>)" );
+<% end %>

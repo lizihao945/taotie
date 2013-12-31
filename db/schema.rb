@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131228044618) do
+ActiveRecord::Schema.define(:version => 20131231161306) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -34,6 +34,26 @@ ActiveRecord::Schema.define(:version => 20131228044618) do
 
   add_index "cook_steps", ["cookbook_id"], :name => "index_cook_steps_on_cookbook_id"
 
+  create_table "cookbook_comments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "cookbook_id"
+    t.text     "content"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "cookbook_comments", ["cookbook_id"], :name => "index_cookbook_comments_on_cookbook_id"
+  add_index "cookbook_comments", ["user_id"], :name => "index_cookbook_comments_on_user_id"
+
+  create_table "cookbook_likes", :force => true do |t|
+    t.integer  "cookbook_id"
+    t.integer  "count"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "cookbook_likes", ["cookbook_id"], :name => "index_cookbook_likes_on_cookbook_id"
+
   create_table "cookbooks", :force => true do |t|
     t.integer  "user_id"
     t.integer  "difficulty_level"
@@ -42,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20131228044618) do
     t.string   "tips"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.integer  "food_id"
   end
 
   create_table "food_categories", :force => true do |t|
@@ -110,6 +131,13 @@ ActiveRecord::Schema.define(:version => 20131228044618) do
   end
 
   add_index "restaurants", ["user_id"], :name => "index_restaurants_on_user_id"
+
+  create_table "user_cookbook_likeships", :force => true do |t|
+    t.integer  "cookbook_like_id"
+    t.integer  "user_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
   create_table "user_foodships", :force => true do |t|
     t.integer  "user_id"

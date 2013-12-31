@@ -5,7 +5,7 @@
     <% 4.times do |tmp| %>
     <div class="col-md-3">
       <% @foods.each do |food| %>
-        <% if food.id % 4 == tmp %>
+        <% if (food.id - @foods.first.id) % 4 == tmp %>
           <div class='food' id="food_<%= food.id %>">
             <div class='food_img'>
               <%= image_tag food.image_url %></div>
@@ -63,4 +63,4 @@
     </div>
     <% end %>
   </div>
-  <%= link_to 'New Food', new_food_path, class: 'btn btn-lg btn-primary', role: 'button' %></div>
+  <%= link_to '新美食', new_food_path, class: 'btn btn-lg btn-primary', role: 'button' %></div>

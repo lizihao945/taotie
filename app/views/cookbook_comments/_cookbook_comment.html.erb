@@ -1,0 +1,12 @@
+<%= div_for cookbook_comment do %>
+  <% if cookbook_comment.user %>
+    <%= render cookbook_comment.user %>：
+  <% end %>
+  <%= cookbook_comment.content %>
+  <br/>
+  <% delete_path = "/cookbooks/"+ String(cookbook_comment.cookbook_id) + "/cookbook_comments/" + String(cookbook_comment.id) %>
+  <% if cookbook_comment.user == current_user || cookbook_comment.cookbook.main_user == current_user %>
+  <%= link_to 'Destroy', delete_path, method: :delete, remote: true %>
+  <% end %>
+  <hr style='margin-top: 5px; margin-bottom: 5px;'>
+<% end %>

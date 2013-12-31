@@ -1,3 +1,36 @@
-// Place all the styles related to the Cookbooks controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.cookbook {
+	box-shadow: 2px 2px 3px #aaaaaa;
+	padding: 15px 15px 0;
+	background-color: #fff;
+	margin-bottom: 20px;
+}
+
+.cookbook_img img {
+	width: 230px;
+	height: 170px;
+}
+
+.cookbook_info {
+	.food_name {
+		margin-top: 10px;
+		text-align: center;
+	}
+}
+
+.cookbook_user_info {
+	color: #999;
+	height: 40px;
+}
+
+.cookbook_like_comment_div {
+	height: 20px;
+	.cookbook_like_comment {
+		color: #999;
+		float: right;
+	}
+}
+
+.cookbook_image {
+	height: 360px;
+	width: 360px;
+}

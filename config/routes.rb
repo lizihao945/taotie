@@ -1,6 +1,7 @@
 Taotie::Application.routes.draw do
 
   put 'likes/:id' => 'likes#update', as: 'like'
+  put 'cookbook_likes/:id' => 'cookbook_likes#update', as: 'cookbook_like'
 
   resources :restaurants
 
@@ -10,7 +11,9 @@ Taotie::Application.routes.draw do
 
   resources :materials
 
-  resources :cookbooks
+  resources :cookbooks do
+    resources :cookbook_comments
+  end
 
   resources :foods do
     resources :comments

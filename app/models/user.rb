@@ -1,9 +1,10 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation, :image_url
+  attr_accessible :email, :name, :password, :password_confirmation,:image_url
   #email
   validates_uniqueness_of :email
-  validates :email, format: { with: /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/,
-                              message: 'Invalid'}
+  validates :email, format: {
+    with: /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/,
+    message: 'Invalid'}
   #name
   validates_presence_of :name, :email
   validates_uniqueness_of :name
@@ -13,8 +14,9 @@ class User < ActiveRecord::Base
   validates_presence_of :password, on: :create
   validates :password, length: {minimum: 6}
   #image_url
-  validates :image_url, format: { with: /\.(gif|jpg|png|Png|Gif|Jpg)$/,
-                              message: 'Invalid'}
+  validates :image_url, format: {
+    with: /\.(gif|jpg|png|Png|Gif|Jpg)$/,
+    message: 'Invalid'}
 
   def self.authenticate(email, password)
     user = find_by_email_and_password(email, password)
@@ -25,6 +27,9 @@ class User < ActiveRecord::Base
   #like liked by the user
   has_many :user_likeships
   has_many :likes, through: :user_likeships
+  #cookbook_like liked by the user
+  has_many :user_cookbook_likeships
+  has_many :cookbook_likes, through: :user_cookbook_likeships
   #
   def able_to_modify_food?(food)
     self.foods.find(:all, conditions: ['food_id = ?', food.id]).size != 0
@@ -32,5 +37,9 @@ class User < ActiveRecord::Base
   #
   def already_likes?(food)
     self.likes.find(:all, conditions: ['food_id = ?', food.id]).size != 0
+  end
+  #
+  def already_likes_cookbook?(cookbook)
+    self.cookbook_likes.find(:all, conditions: ['cookbook_id = ?', cookbook.id]).size != 0
   end
 end
