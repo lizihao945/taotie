@@ -41,6 +41,9 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
+    if @user.image_url == ""
+      @user.image_url = 'default_avatar.png'
+    end
 
     respond_to do |format|
       if @user.save
