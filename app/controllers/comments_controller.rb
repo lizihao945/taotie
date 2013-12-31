@@ -13,9 +13,7 @@ class CommentsController < ApplicationController
     @comment.food = Food.find(params[:food_id])
     @comment.user = current_user
     respond_to do |format|
-      if @comment.save
-        format.js
-      end
+      format.js
     end
   end
 

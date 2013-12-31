@@ -5,18 +5,17 @@ class CommentsControllerTest < ActionController::TestCase
     @comment = comments(:one)
   end
 
-  test "should create comment" do
+  test "shouldn't create comment to no food" do
     assert_same('Comment.count') do
-      post :create, session: { user_id: 1 }
-      post :create, comment: { cotent: @comment.cotent }
+    	Session.new( user_id: 1 )
+      post :create, comment: { content: @comment.cotent }
     end
-
-    assert_redirected_to comment_path(assigns(:comment))
   end
 
   test "shouldn't create comment when not logged in" do
     assert_same('Comment.count') do
-      post :create, comment: { cotent: @comment.cotent }        
+      post :create, comment: { content: @comment.cotent }
     end
-  end
+		assert_redirected_to :action => "login"
+	end
 end

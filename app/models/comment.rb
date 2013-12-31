@@ -3,5 +3,7 @@ class Comment < ActiveRecord::Base
   belongs_to :food
   attr_accessible :content, :user, :food
   validates_presence_of :content
-  validates :content, length: {maximum: 6}
+  validates :content, length: {minimum: 10}
+  validates :content, format: { without: /fuck/ }
+
 end

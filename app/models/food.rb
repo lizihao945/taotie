@@ -11,6 +11,9 @@ class Food < ActiveRecord::Base
 
   has_one :like
   has_many :comments
+  #image_url
+  validates :image_url, format: { with: /\.(gif|jpg|png|Png|Gif|Jpg)$/,
+                              message: 'Invalid'}
 
   validates_presence_of :name
   validates_presence_of :description
