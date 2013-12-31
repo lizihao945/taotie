@@ -60,10 +60,9 @@ module Taotie
     config.assets.version = '1.0'
 
     config.assets.initialize_on_precompile = false
-    
-    config.i18n.available_locales = ['zh-CN', 'en-US']
+
     config.i18n.default_locale = 'zh-CN'
 
-    I18n.enforce_available_locales = true
+    I18n.enforce_available_locales = false
   end
 end
