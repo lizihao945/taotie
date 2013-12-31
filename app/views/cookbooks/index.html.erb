@@ -18,8 +18,8 @@
               <% if categories.count != 0 %>
                 <div>
                   标签：
-                  <% categories.each do |cookbook_categoryship| %>
-                  <%= cookbookCategory.find(cookbook_categoryship.cookbook_category_id).name %>
+                  <% categories.each do |food_food_categoryship| %>
+                  <%= FoodCategory.find(food_food_categoryship.food_category_id).name %>
                   <% end %></div>
               <% end %>
               <div>
@@ -27,9 +27,12 @@
                 <%= cookbook.tips %></div>
               <!-- user info -->
               <div class='cookbook_user_info'>
-                <%= render cookbook.user %> 发布于 <%= time_ago_in_words cookbook.created_at %> ago.</div>
+                <%= render cookbook.user %> 发布于 <%= time_ago_in_words cookbook.created_at %> 以前</div>
                 <!-- food like -->
               <div class='cookbook_like_comment_div'>
+                <% if cookbook.user == current_user %>
+                  <%= link_to "删除", cookbook, method: :delete, data: { confirm: "确定删除？" } %>
+                <% end %>
                 <%= render partial: 'cookbook_like_comment', locals: { cookbook: cookbook } %>
               </div>
               <!-- comments -->

@@ -50,10 +50,11 @@ class CookbooksController < ApplicationController
   def create
     @cookbook = Cookbook.new(params[:cookbook])
     @cookbook.user = current_user
-
+    @cookbook_like = CookbookLike.create( cookbook: @cookbook )
+    @cookbook.cookbook_like = @cookbook_like
     respond_to do |format|
       if @cookbook.save
-        format.html { redirect_to @cookbook, notice: 'Cookbook was successfully created.' }
+        format.html { redirect_to cookbooks_url, notice: 'Cookbook was successfully created.' }
         format.json { render json: @cookbook, status: :created, location: @cookbook }
       else
         format.html { render action: "new" }

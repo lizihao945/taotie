@@ -6,6 +6,7 @@ Encoding.default_external = Encoding::UTF_8
 Encoding.default_internal = Encoding::UTF_8
 
 gem 'i18n'
+gem 'rails-i18n', '~> 3.0.0'
 
 group :development, :test do
   gem 'sqlite3'

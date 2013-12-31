@@ -1,5 +1,5 @@
 class Cookbook < ActiveRecord::Base
-  attr_accessible :name, :description, :difficulty_level, :time_level, :tips, :user, :food_id
+  attr_accessible :description, :difficulty_level, :time_level, :tips, :user, :food_id
   belongs_to :user
   belongs_to :food
   has_many :cook_steps
@@ -9,4 +9,8 @@ class Cookbook < ActiveRecord::Base
 
   has_one :cookbook_like
   has_many :cookbook_comments
+
+	validates_presence_of :description
+  validates_presence_of :difficulty_level
+  validates_presence_of :time_level
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131231161306) do
+ActiveRecord::Schema.define(:version => 20131231192224) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -47,9 +47,9 @@ ActiveRecord::Schema.define(:version => 20131231161306) do
 
   create_table "cookbook_likes", :force => true do |t|
     t.integer  "cookbook_id"
-    t.integer  "count"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "count",       :default => 0
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   add_index "cookbook_likes", ["cookbook_id"], :name => "index_cookbook_likes_on_cookbook_id"
