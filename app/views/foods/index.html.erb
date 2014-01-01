@@ -38,6 +38,9 @@
               <% end %>
               <!-- food like -->
               <div class='food_like_comment_div'>
+                <% if food.main_user == current_user %>
+                  <%= link_to "删除", food, method: :delete, data: { confirm: "确定删除？所有相关菜谱也会被一并删除！" } %>
+                <% end %>
                 <%= render partial: 'food_like_comment', locals: { food: food } %>
               </div>
               <!-- comments -->

@@ -12,7 +12,7 @@ class Food < ActiveRecord::Base
   has_one :like
   has_many :comments
   #image_url
-  validates :image_url, format: {
+  validates :image_url, allow_blank: true, format: {
     with: /\.(gif|jpg|png|Png|Gif|Jpg)$/,
     message: 'Invalid'}
 

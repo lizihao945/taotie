@@ -49,9 +49,13 @@ class FoodsController < ApplicationController
   # POST /foods.json
   def create
     @food = Food.new(params[:food])
-    user_foodship = UserFoodship.create( user: current_user, food: @food )
-    params[:food_categories].each do |category_id, val|
-      FoodFoodCategoryship.create( food_id: @food.id, food_category_id: category_id.to_i)
+    @food.main_user = current_user
+    user_foodship = UserFoodship.create(user: current_user, food: @food)
+    like = Like.create(food: @food, count: 0)
+    if params[:food_categories]
+      params[:food_categories].each do |category_id, val|
+        FoodFoodCategoryship.create( food_id: @food.id, food_category_id: category_id.to_i)
+      end
     end
 
     respond_to do |format|
@@ -85,6 +89,12 @@ class FoodsController < ApplicationController
   # DELETE /foods/1.json
   def destroy
     @food = Food.find(params[:id])
+    @cookbooks = Cookbook.find_all_by_food_id(@food.id)
+    if @cookbooks
+      @cookbooks.each do |cookbook|
+        cookbook.destroy
+      end
+    end
     @food.destroy
 
     respond_to do |format|
