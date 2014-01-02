@@ -6,7 +6,7 @@
   <br/>
   <% delete_path = "/cookbooks/"+ String(cookbook_comment.cookbook_id) + "/cookbook_comments/" + String(cookbook_comment.id) %>
   <% if cookbook_comment.user == current_user || cookbook_comment.cookbook.user == current_user %>
-  <%= link_to 'Destroy', delete_path, method: :delete, remote: true %>
+  <%= link_to '删除', delete_path, method: :delete, remote: true %>
   <% end %>
   <hr style='margin-top: 5px; margin-bottom: 5px;'>
 <% end %>
