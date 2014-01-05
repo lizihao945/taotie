@@ -1,3 +1,49 @@
 // Place all the styles related to the Menus controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.menu {
+	box-shadow: 2px 2px 3px #aaaaaa;
+	padding: 10px 10px 0;
+	background-color: #fff;
+	margin-bottom: 20px;
+}
+
+.description {
+	border-top: 1px dotted #e6e6db;
+	border-top-width: 1px;
+	border-top-style: dotted;
+	border-top-color: rgb(230, 230, 219);
+}
+
+.menu_img img {
+	width: 230px;
+	height: 170px;
+}
+
+.menu_name {
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+.menu_user_info {
+	color: #999;
+	height: 40px;
+}
+.menu_detail_cookbooks_img {
+	img {
+		width: 165px;
+		height: 130px;
+	}
+}
+.menu_cookbooks_img {
+	img {
+		height: 110px;
+		width: 110px;
+		margin: 0 5px 5px 0;
+	}
+}
+
+.form-part {
+	background-color: #f4f0ec;
+	padding-top: 10px;
+}

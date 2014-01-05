@@ -1,4 +1,12 @@
 class MenusController < ApplicationController
+  before_filter :authenticate, :except => [:index, :show]
+
+  def authenticate
+    if current_user.nil?
+      redirect_to login_path, :notice => "Please login."
+    end
+  end
+
   # GET /menus
   # GET /menus.json
   def index
@@ -42,7 +50,12 @@ class MenusController < ApplicationController
   def create
     @menu = Menu.new(params[:menu])
     @menu.user = current_user
-
+    4.times do |i|
+      url = params["cookbook_url_#{i}".to_sym]
+      if url != ""
+        MenuCookbookship.create(menu: @menu, cookbook_id: url.split('/').last)
+      end
+    end
     respond_to do |format|
       if @menu.save
         format.html { redirect_to @menu, notice: 'Menu was successfully created.' }

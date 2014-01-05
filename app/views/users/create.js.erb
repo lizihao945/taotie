@@ -1,0 +1,10 @@
+<% if @user.errors.any? %>
+  <% x = "发生了 #{@user.errors.count} 个错误" %>
+	<% x += '\n' %>
+  <% @user.errors.full_messages.each do |msg| %>
+  	<% x += msg.to_s + '\n' %>
+  <% end %>
+  alert("<%= x %>");
+<% else %>
+  $.post( "/sessions", { email: "<%= @user.email %>", password: "<%= @user.password %>" } );
+<% end %>

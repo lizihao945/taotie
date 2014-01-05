@@ -1,0 +1,8 @@
+<% user = User.authenticate(params[:email], params[:password]) %>
+<% if not user %>
+  $( '#notice' ).remove();
+  $( '#error_explanation' ).remove();
+  alert('错误的邮箱或密码！');
+<% else %>
+  window.location.href='/';
+<% end %>

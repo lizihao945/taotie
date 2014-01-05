@@ -1,20 +1,32 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @menu.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @menu.description %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @menu.user %>
-</p>
-
-
-<%= link_to 'Edit', edit_menu_path(@menu) %> |
-<%= link_to 'Back', menus_path %>
+<div class='container'>
+	<div class='row'>
+		<h3><%= @menu.name %></h3>
+	</div>
+	<div class='row description'>
+		<h3><%= @menu.description %></h3>
+	</div>
+	<div class='row'>
+		<div class='col-md-9'>
+			<div class='row'>
+				<% 3.times do |tmp| %>
+					<div class='col-md-3'>
+			      <% @menu.cookbooks.each_with_index do |cookbook, index| %>
+			        <% if index % 3 == tmp %>
+			          <div class='cookbook' id="cookbook_<%= cookbook.id %>">
+			            <div class='menu_detail_cookbooks_img'>
+			              <%= image_tag cookbook.food.image_url %></div>
+			            <div class='cookbook_info'>
+			              <div class='food_name'><strong><%= link_to cookbook.food.name + " By " + cookbook.user.name, cookbook %></strong></div>
+			            </div>
+			          </div>
+							<% end %>
+						<% end %>
+		      </div>
+				<% end %>
+			</div>
+		</div>
+		<div class='col-md-3'>
+			<%= render @menu.user %>
+		</div>
+	</div>
+</div>

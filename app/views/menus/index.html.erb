@@ -1,35 +1,32 @@
-<h1>Listing menus</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>User</th>
-    <th>Cookbooks</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @menus.each do |menu| %>
-  <tr>
-    <td><%= menu.name %></td>
-    <td><%= menu.description %></td>
-    <td><%= menu.user %></td>
-    <td>      
-      <% if menu.cookbooks.size != 0 %>
-      <%= menu.cookbooks %>
-      <% else %>
-      No cookbooks has been added.
+<div class='container'>
+  <h2>精选  菜单</h2>
+  <hr class="title-divider">
+  <div class="row">
+    <% 4.times do |tmp| %>
+    <div class="col-md-3">
+      <% @menus.each do |menu| %>
+        <% if (menu.id - @menus.first.id) % 4 == tmp %>
+          <div class='menu' id="menu_<%= menu.id %>">
+            <div class='menu_name'><strong><%= link_to menu.name, menu %></strong></div>
+            <div class='menu_cookbooks_img'>
+              <% if menu.cookbooks.count != 0 %>
+                <% menu.cookbooks.each do |cookbook| %>
+                  <%= image_tag cookbook.food.image_url %>
+                <% end %>
+              <% end %>
+            </div>
+            <!-- user info -->
+            <div class='menu_user_info'>
+              <%= render menu.user %> 发布于 <%= time_ago_in_words menu.created_at %> 以前
+            </div>
+            <% if menu.user == current_user %>
+              <%= link_to "删除", menu, method: :delete, data: { confirm: "确定删除？" } %>
+            <% end %>
+          </div>
+        <% end %>
       <% end %>
-    </td>
-    <td><%= link_to 'Show', menu %></td>
-    <td><%= link_to 'Edit', edit_menu_path(menu) %></td>
-    <td><%= link_to 'Destroy', menu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Menu', new_menu_path %>
+    </div>
+    <% end %>
+  </div>
+  <%= link_to '新菜单', new_menu_path, class: 'btn btn-lg btn-primary', role: 'button' %>
+</div>

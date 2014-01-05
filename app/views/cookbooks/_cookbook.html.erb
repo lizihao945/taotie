@@ -1,0 +1,47 @@
+<div class='cookbook' id="cookbook_<%= cookbook.id %>">
+  <div class='cookbook_img'>
+    <%= image_tag cookbook.food.image_url %></div>
+  <div class='cookbook_info'>
+    <div class='food_name'><strong><%= link_to cookbook.food.name + " By " + cookbook.user.name, cookbook %></strong></div>
+    <div>
+      简介：
+      <%= cookbook.description %></div>
+    <% categories = FoodFoodCategoryship.find_all_by_food_id(cookbook.food.id) %>
+    <% if categories.count != 0 %>
+      <div>
+        标签：
+        <% categories.each do |food_food_categoryship| %>
+        <%= FoodCategory.find(food_food_categoryship.food_category_id).name %>
+        <% end %></div>
+    <% end %>
+    <div>
+      小贴士：
+      <%= cookbook.tips %></div>
+    <!-- user info -->
+    <div class='cookbook_user_info'>
+      <%= render cookbook.user %> 发布于 <%= time_ago_in_words cookbook.created_at %> 以前</div>
+      <!-- food like -->
+    <div class='cookbook_like_comment_div'>
+      <% if cookbook.user == current_user %>
+        <%= link_to "删除", cookbook, method: :delete, data: { confirm: "确定删除？" } %>
+      <% end %>
+      <%= render partial: 'cookbook_like_comment', locals: { cookbook: cookbook } %>
+    </div>
+    <!-- comments -->
+    <div class= 'list_cookbook_comments', id="list_cookbook_comments_<%= cookbook.id %>">
+      <div id="existing_cookbook_comments_<%= cookbook.id %>" >
+        <%= render cookbook.cookbook_comments %>
+      </div>
+    </div>
+    <div class="new_comment new_comment_<%= cookbook.id %>">
+      <%= form_for [cookbook, CookbookComment.new],
+        html: { id: "new_comment_on_#{cookbook.id}" },
+        remote: true do |f| %>
+        <p>
+          <%= f.text_area :content, class: 'form-control', rows: 5 %></p>
+        <p>
+          <%= submit_tag '评论', class: 'btn', role: 'button' %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
