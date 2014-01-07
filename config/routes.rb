@@ -5,7 +5,7 @@ Taotie::Application.routes.draw do
 
   resources :restaurants
 
-  get "welcome/index"
+  get 'about' => 'welcome#about'
 
   resources :menus
 
