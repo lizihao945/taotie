@@ -1,20 +1,26 @@
-<p id="notice"><%= notice %></p>
+<div class='container'>
+	<div class='row'>
+		<h2><%= @restaurant.name %></h2>
+		<hr>
+	</div>
+	<div class='row'>
+		<div class='col-md-7'>
+			<p>
+				在这里，您可以吃到。。。
+			</p>
+			<div class='foods'>
+				<%= RestaurantFoodships.find_all_by_restaurant_id(@restaurant.id).each do |r| %>
+					<%= render Food.find(r.food_id) %>
+				<% end %>
+			</div>
+		</div>
+		<div class='col-md-3'>
+			<%= render @restaurant.user %>
+			<p>
+				<%= @restaurant.user.description %>
+			</p>
+		</div>
+	</div>
+	<%= link_to '修改', edit_restaurant_path(@restaurant) %>
+</div>
 
-<p>
-  <b>Name:</b>
-  <%= @restaurant.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @restaurant.description %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @restaurant.user %>
-</p>
-
-
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-<%= link_to 'Back', restaurants_path %>

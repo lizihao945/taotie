@@ -1,16 +1,15 @@
-<div>
-	<div class="left zupmnbottom mtm">
-		<div class='user_img'>
-			<%= image_tag @user.image_url%>
+<div class='container'>
+	<hr>
+	<div class='row'>
+		<div class="col-md-7">
+			<div class='user_image'>
+				<%= image_tag @user.image_url, class: 'small_avatar'%>
+			</div>
+			<a><span><%= @user.name %></span></a>
+			<div>
+				<%= simple_format @user.description %>
+			</div>
 		</div>
-		<a><span><%= @user.name %></span></a>
 	</div>
-	<div class='food_likes'>
-		<span class='glyphicon glyphicon-heart'></span>
-		<a dishid="276536" href="javascript:void(0);" class="reczulikeed">160 喜欢</a>
-  </div>
-  <div class='food_comments'>
-  	<span class='glyphicon glyphicon-comment'></span>
-		<span class="right mlm"><a dishid="160" href="http://www.douguo.com/dish/276536" class="reczupingl" target="_blank">20 评论</a></span>
-	</div>
+	<%= link_to '修改资料', edit_user_path(@user)  %>
 </div>

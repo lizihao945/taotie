@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131231192224) do
+ActiveRecord::Schema.define(:version => 20140108080601) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -122,12 +122,20 @@ ActiveRecord::Schema.define(:version => 20131231192224) do
 
   add_index "menus", ["user_id"], :name => "index_menus_on_user_id"
 
+  create_table "restaurant_foodships", :force => true do |t|
+    t.integer  "restaurant_id"
+    t.integer  "food_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "restaurants", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "image_url"
   end
 
   add_index "restaurants", ["user_id"], :name => "index_restaurants_on_user_id"
@@ -157,9 +165,10 @@ ActiveRecord::Schema.define(:version => 20131231192224) do
     t.string   "name"
     t.string   "email"
     t.string   "password"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-    t.string   "image_url",  :default => ""
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+    t.string   "image_url",   :default => ""
+    t.string   "description"
   end
 
 end

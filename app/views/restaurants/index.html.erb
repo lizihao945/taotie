@@ -1,27 +1,15 @@
-<h1>Listing restaurants</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @restaurants.each do |restaurant| %>
-  <tr>
-    <td><%= restaurant.name %></td>
-    <td><%= restaurant.description %></td>
-    <td><%= restaurant.user %></td>
-    <td><%= link_to 'Show', restaurant %></td>
-    <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
-    <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Restaurant', new_restaurant_path %>
+<div class='container'>
+  <h2>那些食客的天堂</h2>
+  <hr class="title-divider">
+  <div class="row">
+    <% 4.times do |tmp| %>
+    <div class="col-md-3">
+      <% @restaurants.each do |restaurant| %>
+        <% if (restaurant.id - @restaurants.first.id) % 4 == tmp %>
+          <%= render restaurant %>
+        <% end %>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+  <%= link_to '新餐厅', new_restaurant_path, class: 'btn btn-lg btn-primary', role: 'button' %></div>

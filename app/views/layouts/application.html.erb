@@ -25,24 +25,30 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-		<!-- foods -->
+		    <!-- foods -->
       	<% if current_page?(foods_url) %>
           <li class="active">
         <% else %>
           <li>
         <% end %><a href="/foods">美食</a></li>
-		<!-- cookbooks -->
+		    <!-- cookbooks -->
       	<% if current_page?(cookbooks_url) %>
           <li class="active">
         <% else %>
           <li>
         <% end %><a href="/cookbooks">菜谱</a></li>
-		<!-- index -->
+		    <!-- menus -->
       	<% if current_page?(menus_url) %>
           <li class="active">
         <% else %>
           <li>
         <% end %><a href="/menus">菜单</a></li>
+        <!-- restaurants -->
+        <% if current_page?(restaurants_url) %>
+          <li class="active">
+        <% else %>
+          <li>
+        <% end %><a href="/restaurants">餐厅</a></li>
       	<!-- about -->	
       	<li><a href="/about">关于</a></li>
       </ul>
@@ -58,8 +64,8 @@
 			    <li class="dropdown">
 			      <a href="#" class="dropdown-toggle" data-toggle="dropdown">发布 <b class="caret"></b></a>
 			      <ul class="dropdown-menu">
-			        <li><a href="#">发布菜谱</a></li>
-			        <li><a href="#">创建菜单</a></li>
+			        <li><%= link_to "发布菜谱", new_cookbook_url %></li>
+              <li><%= link_to "创建菜单", new_menu_url %></li>
   			      <li><a href="#">上传日记</a></li> 
 			      </ul>
 			    </li>
