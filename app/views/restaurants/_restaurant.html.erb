@@ -1,0 +1,8 @@
+<div class='restaurant' id="restaurant_<%= restaurant.id %>">
+  <div class='restaurant_name'><strong><%= link_to restaurant.name, restaurant %></strong></div>
+  <div class='restaurant_img'>
+    <%= image_tag restaurant.image_url %></div>
+  <div class='restaurant_info'>
+    简介：
+    <%= restaurant.description %></div>
+</div>
